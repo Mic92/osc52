@@ -157,4 +157,4 @@ hitting screen's max DCS length."
   (osc52-interprogram-cut-function (buffer-substring-no-properties
                            START END)))
 
-(provide 'osc52e)
+(provide 'osc52)
