@@ -1,19 +1,30 @@
-;;;; This script can be loaded during emacs initialization to automatically
-;;;; send `kill-region' and `kill-ring-save' regions to your system clipboard.
-;;;; The OSC 52 terminal escape sequence is used to transfer the selection from
-;;;; emacs to the host terminal.
+;;; company-tmux.el --- auto complete with content of tmux panes -*- lexical-binding: t -*-
 
-;;;; It is based off of the osc52.el copyright the Chromium OS authors, but
-;;;; was modified to add support for tmux, graphical displays, and
-;;;; multi-byte strings.
+;; Author: Jörg Thalheim <joerg@thalheim.io>
+;; URL: https://github.com/Mic92/osc52
+;; Version: 0.01
+;; Package-Requires: ((emacs "24.3"))
 
-;;;; It works in hterm, xterm, and other terminal emulators which support the
-;;;; sequence.
+;; This script can be loaded during emacs initialization to automatically
+;; send `kill-region' and `kill-ring-save' regions to your system clipboard.
+;; The OSC 52 terminal escape sequence is used to transfer the selection from
+;; emacs to the host terminal.
 
-;;;; It also works under screen, via `osc52-select-text-dcs' and tmux via
-;;;; `osc52-select-text-tmux', as long as the terminal supports OSC 52.
+;; It is based off of the osc52.el copyright the Chromium OS authors, but
+;; was modified to add support for tmux, graphical displays, and
+;; multi-byte strings.
 
-;;;; Call `osc52-set-cut-function' to activate.
+;; It works in hterm, xterm, and other terminal emulators which support the
+;; sequence.
+
+;; It also works under screen, via `osc52-select-text-dcs' and tmux via
+;; `osc52-select-text-tmux', as long as the terminal supports OSC 52.
+
+;; Call `osc52-set-cut-function' to activate.
+
+;;; Commentary:
+
+;;; Code:
 
 (defcustom osc52-max-sequence 100000
   "Maximum length of the OSC 52 sequence.
