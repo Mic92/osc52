@@ -1,4 +1,4 @@
-;;; company-tmux.el --- auto complete with content of tmux panes -*- lexical-binding: t -*-
+;;; osc52.el --- copy text to the host terminal clipboard -*- lexical-binding: t -*-
 
 ;; Author: Jörg Thalheim <joerg@thalheim.io>
 ;; URL: https://github.com/Mic92/osc52
@@ -169,3 +169,5 @@ hitting screen's max DCS length."
                            START END)))
 
 (provide 'osc52)
+
+;;; osc52.el ends here
