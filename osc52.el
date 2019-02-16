@@ -63,8 +63,9 @@ natively support OSC 52."
     (if (<= b64-length osc52-max-sequence)
         (send-string-to-terminal
          (concat "\e]52;c;"
-                 (base64-encode-string string t)
+                 (base64-encode-string (encode-coding-string string 'utf-8-unix) t)
                  "\07"))
+
       (message \"Selection too long to send to terminal %d\" b64-length)
       (sit-for 2))))
 
