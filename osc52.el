@@ -89,10 +89,11 @@ hitting screen's max DCS length."
          (concat "\eP\e]52;c;"
                  (replace-regexp-in-string
                   "\n" "\e\\\\\eP"
-                  (base64-encode-string (encode-coding-string string 'binary)))
+                  (base64-encode-string (encode-coding-string string 'utf-8-unix)))
                  "\07\e\\"))
         (message "Selection too long to send to terminal %d" b64-length)
         (sit-for 2))))
+
 
 (defun osc52-select-text-tmux (string &optional replace yank-handler)
   "Copy STRING to the system clipboard using the OSC 52 escape sequence, for
@@ -113,11 +114,12 @@ hitting screen's max DCS length."
     (if (<= b64-length osc52-max-sequence)
         (send-string-to-terminal
          (concat "\ePtmux;\e\e]52;c;"
-                 (base64-encode-string (encode-coding-string string 'binary)
+                 (base64-encode-string (encode-coding-string string 'utf-8-unix)
                                        t)
                  "\a\e\\"))
       (message "Selection too long to send to terminal %d" b64-length)
       (sit-for 2))))
+
 
 (defvar osc52-cut-function)
 
